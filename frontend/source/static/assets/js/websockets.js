@@ -15,6 +15,13 @@ try {
         socket.addEventListener("message", function (e) {
             console.log("message: ", JSON.parse(e.data));
         });
+        
+        setTimeout(function() {
+            socket.send(JSON.stringify({
+                    "type" : "name",
+                    "data" : "hello test"
+                }));
+        }, 5000)
 
         console.log("socket:", socket);
 
