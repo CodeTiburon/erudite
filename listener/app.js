@@ -34,14 +34,35 @@ app.get('/', function (req, res) {
 
 io.sockets.on('connection', function (socket) {
     
-    setTimeout(function(){ 
+   /* setTimeout(function(){ 
         socket.emit('news', { content: 'Hello World!!!' }); 
-    }, 3000);
+    }, 3000); */
     
+    /* New user joined the game */
+    socket.on('game-join', function (data) {        
+        console.log(data);
+        // send notifications to all
+        io.sockets.emit('user-joined', data);
+    });
     
-    socket.on('news', function (data) {        
-        socket.emit('news', { content: data.text });
-        socket.broadcast.emit('news', { content: data.text});
+    /* User started the game */
+    socket.on('game-start', function (data) {        
+        console.log(data);
+        // send cards (id, question, score, status, options (without correct)
+        
+        // send notifications to all
+        io.sockets.emit('game-started', data);
+    });
+    
+    /* User answered the card */
+    socket.on('game-start', function (data) {        
+        console.log(data);
+        // change card number
+        
+        // send notifications to all
+        io.sockets.emit('game-started', data);
+        // update score
+        io.sockets.emit('scorechanged', data);
     });
          
     socket.on('scorechanged', function (data) {
