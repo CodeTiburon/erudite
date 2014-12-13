@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('homestead','kos-VirtualBox'),
+	'local' => array('homestead','kos-VirtualBox','kos-pc'),
         'owner' => array('ct-hero'),
         'vadim' => array('Vadims-MacBook-Pro.local')
 

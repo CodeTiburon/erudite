@@ -25,7 +25,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'erudite',
 			'username'  => 'root',
-			'password'  => 'vecrekm',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
