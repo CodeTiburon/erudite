@@ -53,7 +53,7 @@ module.exports = function () {
         
         loadGames();
         loadConfig();
-        initMap();
+        //initMap();
     }
     
     function initMap()
@@ -124,7 +124,6 @@ module.exports = function () {
                 if (area.title == 'United States') {
                     map.dataProvider.areas[i].showAsSelected = true;
                     map.returnInitialColor(map.dataProvider.areas[i]);
-                    //console.log(area.title);
                 }
             }
         });

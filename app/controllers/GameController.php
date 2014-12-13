@@ -9,9 +9,15 @@ class GameController extends BaseController {
 
 	public function index()
 	{
+            $partials = array();
             
-                       
-            return View::make('game');
+            $partials['header'] = View::make('partials.header', array('username'=>Cookie::get('user')));
+            $partials['footer'] = View::make('partials.footer');
+            $partials['games-list'] = View::make('partials.games-list');
+            $partials['create-game'] = View::make('partials.create-game');
+            $partials['view-game'] = View::make('partials.view-game');
+            
+            return View::make('game', array('username'=>Cookie::get('user'), 'partials'=>$partials));
 	}
         
         /**
@@ -55,6 +61,10 @@ class GameController extends BaseController {
         {
             Game::findOrFail($id);
             $game = Game::find(1)->where('id', '=', $id)->with('players.user', 'topics')->get();
+            
+            foreach ($game[0]->players as &$player) {
+                $player->image = md5($player->user->id.':'.$player->user->name);
+            }
             return  Response::json($game[0]);
         }
         
